@@ -147,16 +147,20 @@ Angular 11
                                 ]
                             })
                             class MyModule{}
+
             Components
                             @Component({
-
+                                selector:'',
+                                templateUrl:'',
+                                providers:[]
                             })
                             class MyComponent{
 
                             }
             Directives
                             @Directive({
-
+                                selector:''
+                                providers:[]
                             })
                             class MyDirective{
                                 
@@ -164,14 +168,16 @@ Angular 11
             Services
 
                             @Injectable({
-
+                                providedIn:'root',
+                                providers:[]
                             })
                             class MyService{
                                 
                             }
             Pipes
                             @Pipe({
-
+                                name:'',
+                                providers:[]
                             })
                             class MyPipe{
                                 
