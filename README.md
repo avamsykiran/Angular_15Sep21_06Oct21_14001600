@@ -56,6 +56,21 @@ Angular 11
                                                                                 on the client and repalces the 
                                                                                 contnet on the index.html
 
+    NodeJS
+    --------------------------------------------------------------------------------------------
+
+    is a javascript execution environment. It allow any ajvascript code to run
+    with out a browser.
+
+        The development process invlovs lot many tools
+            like 
+                    transpeller     to convert .ts into .js     babel
+                    package                                     webpack
+                    dependency management                       npm
+                    write and execute test                      jasmine and karma
+                    ...etc
+        All these development tools will run on a developer machine where we need nodejs.
+
     Angular
     --------------------------------------------------------------------------------------------------------------
 
@@ -149,15 +164,82 @@ Angular 11
                             class MyModule{}
 
             Components
+                            to define our own html elements
+
+                            Component  = Controller + Template
+
+                            Controller is a type script class
+                            Template is a html segment 
+
+                            banner.component.ts
+                            ---------------------------------
                             @Component({
-                                selector:'',
-                                templateUrl:'',
+                                selector:'app-banner',
+                                templateUrl:'banner.component.html',
                                 providers:[]
                             })
-                            class MyComponent{
+                            class BannerComponent{
+                                title: string;
 
+                                constructor(){
+                                    this.title="My First Angular Project";
+                                }
                             }
+
+                            banner.component.html
+                            -----------------------------------
+                            <header>
+                                <h2>{{title}}</h2>
+                            </header>
+
+                            index.html
+                            --------------------
+                                <html>
+                                    <head>
+                                    </head>
+                                    <body>
+                                     <app-banner></app-banner>
+                                    </body>
+                                </html>
+
+
+                            Data Binding
+                            -----------------------------------------
+
+                                binding the data from  the controller to the template.
+
+                                Interpolation
+
+                                        {{angularExpression}}
+
+                                One-Way Data Binding
+                                    Attribute Binding
+                                        
+                                        [attributeName]="angularVariable"
+
+                                        <p width="500"></p>
+                                        <p [width]="w"></p>
+
+                                    Event Binding
+
+                                        (eventDirective)="method()"
+
+                                        HTML Event Attribute        Angular Event Directive
+                                        -------------------------------------------------------
+                                         onSubmit                       ngSubmit
+                                         onClick                        click
+                                         ondblClick                     dblclick
+                                         onMouseOver                    mouseover
+                                         onfocus                        focus
+                                         onblur                         blur
+                                         onchange                       change .....
+
+                                    Style Binding
+                                Two-Way Data Binding
+                            
             Directives
+                            to define our own html attributes
+
                             @Directive({
                                 selector:''
                                 providers:[]
@@ -182,6 +264,37 @@ Angular 11
                             class MyPipe{
                                 
                             }
+
+
+         Angular CLI
+        ---------------------------------------  
+            is a front-line tool used to create and manage an angualr project.
+
+            ng new proj-name
+
+            cd proj-name
+
+            ng serve --port 8899 -o         used to transpell ts to js and pack and host on a dev-server
+            ng build                        used to transpell ts to js and pack into a 'dist' folder
+
+            vendor.js           is composed of all angular packages
+            polyfills.js        is a backward version compatibility code for older browsers
+            main.js             is composed of all the code the developer wrote                                 
+            runtime.js          is a runtime support for angular features that are not supported by older browsers
+            styles.css          is a global style sheet.
+
+            ng test                         used to execute test cases.
+
+            ng g module name
+            ng g component name
+            ng g directive name
+            ng g service name
+            ng g class name
+            ng g pipe name
+            ng g interface name
+            ng g enum name
+                ..etc
+
 
 
 
