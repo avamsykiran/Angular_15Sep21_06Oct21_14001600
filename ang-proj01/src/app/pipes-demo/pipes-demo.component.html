@@ -1,0 +1,36 @@
+<div class="pipesDemo">
+
+    <div>
+        <p>Original: {{str}}</p>
+        <p>{{str|uppercase}}</p>
+        <p>{{str|lowercase}}</p>
+        <p>{{str|titlecase}}</p>
+    </div>
+
+    <div>
+        <p>Original: {{num}}</p>
+        <p>{{num|number:'10.6-9'}}</p>
+        <p>{{num|number:'.0-0'}}</p>
+    </div>
+
+    <div>
+        <p>Original: {{num}}</p>
+        <p>{{num|currency:'INR'}}</p>
+        <p>{{num|currency:'USD'}}</p>
+        <p>{{num|currency:'AUD'}}</p>
+        <p>{{num|currency:'JPY'}}</p>
+        <p>{{num|currency:'GBP'}}</p>
+        <p>{{num|currency:'ABC'}}</p>
+    </div>
+
+    <div>
+        <p>Original: {{today}}</p>
+        <p>{{today|date:'short'}}</p>
+        <p>{{today|date:'long'}}</p>
+        <p>{{today|date:'dd-MM-yyyy'}}</p>
+        <p>{{today|date:'dd-MMM-yyyy'}}</p>
+        <p>{{today|date:'dd-MMMM-yyyy'}}</p>
+        <p>{{today|date:'dd-MM-yy hh:mm:ss a'}}</p>
+        <p>{{today|date:'dd-MM-yy HH:mm:ss'}}</p>
+    </div>
+</div>

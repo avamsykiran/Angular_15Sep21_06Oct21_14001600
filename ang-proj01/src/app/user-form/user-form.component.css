@@ -1,0 +1,8 @@
+.userForm{
+    padding:2%;
+    background-color: #afafaf;
+}
+
+.userForm * {
+    margin:5px;
+}

@@ -1,3 +1,16 @@
 .welcome{
     padding:2%;
 }
+
+.center{
+    display:block;
+    margin:auto;
+}
+
+.border{
+    border: 2px solid #000000;
+}
+
+.roundCorners{
+    border-radius: 5%;
+}

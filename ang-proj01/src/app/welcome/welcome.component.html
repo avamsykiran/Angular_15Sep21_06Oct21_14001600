@@ -2,5 +2,31 @@
 
     <h4>{{welcomeMessage}}</h4>
 
-    <img [src]="logo" (click)="toggleLogo()" />
+    <img [src]="logo" (click)="toggleLogo()" 
+         [style.width.px]="width"
+         [class]="{'center':center,'border':border,'roundCorners':roundCorners}"
+    />
+
+    <form>
+
+        <div>
+            <label>Welcoem Message: </label>
+            <input type="text" name="msgTxt" [(ngModel)]="welcomeMessage" />
+        </div>
+        <div>
+            <label>Image width: 
+                <input type="range" name="imgWidth" [(ngModel)]="width" min="100" max="1000" /> 
+                {{width}} px.
+            </label>
+        </div>
+        <div>
+            <label><input type="checkbox" name="ch1" [(ngModel)]="center" />Align Center </label>
+        </div>
+        <div>
+            <label><input type="checkbox" name="ch1" [(ngModel)]="border" />Apply Border </label>
+        </div>
+        <div>
+            <label><input type="checkbox" name="ch1" [(ngModel)]="roundCorners" />Apply Round Corners </label>
+        </div>
+    </form>
 </div>

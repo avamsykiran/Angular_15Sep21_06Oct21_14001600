@@ -235,16 +235,64 @@ Angular 11
                                          onchange                       change .....
 
                                     Style Binding
+
+                                        [style.cssproperty]="field"
+
+                                        [class]="{'className1':booleanFlag,'className2':booleanFlag}"
+
                                 Two-Way Data Binding
+
+                                    on form elements only.
+
+                                    [(ngModel)]="field"
+
+                                    FormsModule msut be imported into
+                                    the current module.
                             
             Directives
                             to define our own html attributes
 
+                            structural directives
+                                *ngIf
+                                *ngFor
+                                ngSwitch
+                                    *ngSwitchCase
+                                    *ngSwitchDefault
+                            
+                            Custom Directives
+                            ------------------------------
                             @Directive({
                                 selector:''
                                 providers:[]
                             })
                             class MyDirective{
+                                
+                            }
+
+            Pipes
+
+                            is used to tranform a value just before it si rendered.
+
+                            inbuilt pipes
+                            ------------------
+
+                                lowercase
+                                uppercase
+                                titlecase
+                                number
+                                currency
+                                date
+                                json
+                                async
+
+
+                            custome pipes
+                            -------------------
+                            @Pipe({
+                                name:'',
+                                providers:[]
+                            })
+                            class MyPipe{
                                 
                             }
             Services
@@ -256,14 +304,7 @@ Angular 11
                             class MyService{
                                 
                             }
-            Pipes
-                            @Pipe({
-                                name:'',
-                                providers:[]
-                            })
-                            class MyPipe{
-                                
-                            }
+         
 
 
          Angular CLI
