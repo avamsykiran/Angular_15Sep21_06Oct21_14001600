@@ -285,7 +285,6 @@ Angular 11
                                 json
                                 async
 
-
                             custome pipes
                             -------------------
                             @Pipe({
@@ -297,6 +296,20 @@ Angular 11
                             }
             Services
 
+                Injectors are responsible to create an object of a service and
+                provide it to a component/pipe/directive/antoehr service when demanded.
+
+                One injector is associated with each component, pipe, directive, service and
+                module .
+
+                app.module                          root injector
+                    app.componenet                      app component injector
+                    navbar.component                    navbar component injector
+                    user.module                         user module injector
+                        user-home.component                 user-home component injector
+                    inventory.module                    inventiory module injector
+                        stock-hoem.component                stock-home injector
+
                             @Injectable({
                                 providedIn:'root',
                                 providers:[]
@@ -304,8 +317,6 @@ Angular 11
                             class MyService{
                                 
                             }
-         
-
 
          Angular CLI
         ---------------------------------------  
@@ -337,7 +348,21 @@ Angular 11
                 ..etc
 
 
+    Bootstrap Integration with Angular
+    ---------------------------------------------------------------
 
+        1. CDN in index.html
+
+        2. install bootstrap as 'npm install --save bootstrap@4'
+            include the bootstrap.min.css into the styles section of angular.json
+
+
+    InventoryMangementSystem
+    ---------------------------------------------------------------
+    models/Delear
+            id,contactNAme,mobile, address
+    services/DelearService
+    delear-list.component
 
 
 
