@@ -1,20 +1,26 @@
-<h4>Users List</h4>
+<div class="col-sm-5 mx-auto">
+    <h4>Users List</h4>
 
-<div *ngIf="!users || users.length===0" class="alert alert-info p-2">
-    No Records Available.
+    <div *ngIf="!users || users.length===0" class="alert alert-info p-2">
+        No Records Available.
+    </div>
+
+    <table class="table table-border table-hover" *ngIf="users && users.length>0">
+        <thead>
+            <th>Id</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let u of users">
+                <td>{{u.id}}</td>
+                <td>{{u.fullName}}</td>
+                <td>{{u.email}}</td>
+                <td>
+                    <a class="btn btn-sm btn-info" [routerLink]="['/edit',u.id]">EDIT</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
-
-<table class="table table-border table-hover" *ngIf="users && users.length>0">
-    <thead>
-        <th>Id</th>
-        <th>Full Name</th>
-        <th>Email</th>
-    </thead>
-    <tbody>
-        <tr *ngFor="let u of users">
-            <td>{{u.id}}</td>
-            <td>{{u.fullName}}</td>
-            <td>{{u.email}}</td>
-        </tr>
-    </tbody>
-</table>

@@ -23,19 +23,21 @@ export class UserService {
     return this.users.find(u=>u.id===id);
   }
 
-  add(user:User):User{
-    
-    if(this.users.length===0) user.id=1;
-    else user.id = this.users.length+1;
+  add(user?:User):User|undefined{
+    if(user){
+      if(this.users.length===0) user.id=1;
+      else user.id = this.users.length+1;
 
-    this.users.push(user);
-    
+      this.users.push(user);
+    }
     return user;
   }
 
-  update(user:User):User{
-    let index = this.users.findIndex(u=>u.id===user.id);
-    this.users[index]=user;
+  update(user?:User):User|undefined{
+    if(user){
+      let index = this.users.findIndex(u=>u.id===user.id);
+      this.users[index]=user;
+    }
     return user;    
   }
 
