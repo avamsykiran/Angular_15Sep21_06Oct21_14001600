@@ -356,7 +356,6 @@ Angular 11
         2. install bootstrap as 'npm install --save bootstrap@4'
             include the bootstrap.min.css into the styles section of angular.json
 
-
     InventoryMangementSystem
     ---------------------------------------------------------------
     models/Delear
@@ -365,5 +364,257 @@ Angular 11
     delear-list.component
 
 
+    Routing
+    ---------------------------------------------------------------
+
+        RouterModule
+            
+            router-outlet           Component that hold the 
+                                    space in the layout which shall
+                                    be replaced by the component that
+                                    is mapped to the current url.
+
+            
+            routerLink              Directive that holds the url segment
+                                    that has to be navigated to when clicked on the
+                                    applied 'a' element
+
+            routerActiveLink        Directive that hold the class name to be applied
+                                    on the currently active 'a' element.
+
+            Routes                  is an array of route
+            Route                   is a class that represent a ulr-mapping for a component
+                                        path
+                                        component 
+                                        pathMatch           startswith/full
+                                        redirectTo
+                                        children
+                                        canActivate
+                                        canDeActivate
+                                        CanLoad
+                                        CanChildActivate
+
+            ActivatedRoute          Service that supplies information like
+                                    url, path parameters, query parameters...etc
+                                    of the currently active path
+
+            Router                  Servie which is used to naviagate
+                                    from a component to another programatically
+                                        navigateByUrl("url")
+                                        naviagete("urlSegment",{queryString...})
+
+    Angular Forms
+    ---------------------------------------------------------------
+
+        Template Driven Form                Model Driven Form / Reactive Form
+
+            FormsModule                         ReactiveFormModule
+                ngForm                                  FormGroup
+                ngModel                                 FormControl
+                                                        formControlName
+
+            Simple senareio                     Complex forms and nested forms
+            where we have not more 
+            than 2 or 3 form elements
+
+            More of the form is on template     More on the controller side
+            And less on the controller          Less on the template
+            Difficult to test                   Easy to test
+
+    InventoryMangementSystem
+    ---------------------------------------------------------------
+    models/Delear               id,contactNAme,mobile, address
+    services/DelearService      offerng all crud operations
+    delear-list.component
+    delear-form.component       using template driven forms
+    delear-form2.component       using modle driven / reactive forms
+        with add and edit operations and routing
+
+   Angular Component LifeCycle
+    ------------------------------------------------------------------------
+
+        constructor()
+         |
+         |
+        OnInit :: ngOnInit()              be called only once after first
+                                        rendering is done.., used like ana onLoad event.
+
+            |
+            |
+            (the data bounded fields may be updated)--------|
+             |                                              |
+             ngAfterViewInit()                              |
+             |                                              |
+             ngAfterContnet()                               |
+             |                                              |
+             (rerendering of the component)  ---------------|
+                                            |
+                                    (jsut before the component gets destroyed)
+                                            |
+                                            ngOnDestroy()
+
+    RxJS
+    ------------------------------------------------------------------------
+
+            reactive javascript programming
+
+            acts like a bridge between background-executing tasks
+            and foreground-executing tasks...!
 
 
+            in javascript the asynchronous prgramming can be used
+            to execute any task in the background.
+
+            how can the foreground know
+                    the currrent statuc of the background-task
+                    did the background-task complete successfully
+                    did the backgroudn-task encoutered any error and got aborted.
+
+            RxJs offers a class called Observable.
+
+            let backgroundJob = (observer) => {
+
+
+                observer.next(data); //this method can be used to emit valeus while the job in progress.
+                observer.error(errMSg); //this method  signals job abortion and pass the error message
+                observer.complete(); //this method is used to signal suiccessfull completion.
+
+            };
+
+            let ob = new Observable(backgroundJob);
+
+            //the backgroudnJob execution start when we call subscribe on observable object.
+            // and this happens in the foreground.
+            ob.subscriber(
+                (data) => {//this is the success call back to react and receive the data everytiem it is emited},
+                (err) => {//this is the error call back to react and receive the error },
+                () => {//the onComplte call back to react on job completion}
+            );
+
+            RxJS Operators
+
+                creating an observable from another
+                observable.....
+
+                map
+                filter
+                tap
+                last
+                catch
+                ....etc
+
+    Fake Rest Api End Points Using json-server
+    ----------------------------------------------------------------------------
+
+        json-server is a js tool that can create rest end points to perform
+        CRUD operations on a .json file.
+
+        these rest end points are nto for real time usage.
+        only to learn ....
+
+        npm install json-server --save
+
+        json-server --port portNumber --watch dataFile.json
+
+    Rest Api Calls In Angular using HttpClient
+    ----------------------------------------------------------------------------
+
+    HttpClientModule
+       
+       HttpClient
+
+           get(url) :  Observable
+           post(url,reqBody) : Observable
+           put(url,reqBody) : Observable
+           delete(url) : Observable
+
+    Modularization
+    --------------------------------------------------------------------------------
+    Domain: A domain NgModule is organized around a feature, business domain, or user experience.
+    Routed: The top component of the NgModule acts as the destination of a router navigation route.
+    Routing: A routing NgModule provides the routing configuration for another NgModule.
+    Service: A service NgModule provides utility services such as data access and messaging.
+    Widget: A widget NgModule makes a component, directive, or pipe available to other NgModules.
+    Shared: A shared NgModule makes a set of components, directives, and pipes available to other NgModules.
+
+            NgModule	Declarations	Providers	    Exports	        Imported by
+            ------------------------------------------------------------------------------
+            Domain	        Yes	        Rare	        Top component	Another domain, AppModule
+            Routed	        Yes	        Rare	        No	            None
+            Routing	        No	        Yes (Guards)	RouterModule	Another domain (for routing)
+            Service	        No	        Yes	            No	            AppModule
+            Widget	        Yes	        Rare	        Yes	            Another domain
+            Shared	        Yes	        No	            Yes	            Another domain
+
+    ng g module Shared
+    ng g module Widgets
+    ng g module Services --module app.module
+
+    lazy loading a domain module
+    -------------------------------------------------------------
+    ng g module EntityDoamin --route entity --module app.module
+
+    Router Guards
+    ----------------------------------------------------------------------------------
+
+    is used to protect a route from being accessed
+    only when it is allowed to access.
+
+    Angular provides four types of RouterGuards (interfaces)
+
+        CanActivate            control if a route can be entered or not
+        CanDeactivate          control if a route can be left or not
+        CanLoad                controls if a lazy loaded route should be laoded or not
+        CanChildActivate       control if child-routes can be entered or not
+    
+Angular Testing
+---------------------------------------------------------------------------------
+
+    jasmine     is an independent javascript testing library.
+
+                describe    -------------> writes test suits (are a collection of test cases)
+                beforeEach  -------------> that executes a common task before executing each test case
+                afterEach   -------------> that executes a common task after  executing each test case
+                it          -------------> which indicate one test case.
+
+                expect      -------------> creates an assertion object which
+                                            reports test being passed or failed.
+
+                                            the assertion object has matcher functions
+
+                                            toBe(object)
+                                            toBeSame(Object)
+                                            toBeTrue()
+                                            toBeFalse()
+                                            toBeTruthy()
+                                            toBeFalsy()
+                                            toBeNull()
+                                            toBeNotNull()
+                                            toBeUndefined()
+                                            toBeGreaterThan(value) ......etc
+
+                describe("test suit description",()=>{
+
+                    beforeEach(()=>{
+                        //write a job that has to execute commonly
+                        //before executing each test case
+                    })
+
+                    afterEach(()=>{
+                        //write a job that has to execute commonly
+                        //after executing each test case
+                    })
+
+                    it("test case descriotion",()=>{
+                        //the actual test case.....
+                    })
+                });
+
+    karma       is a testing framework/platform for angular, developed by the
+                same tema that developed angular.
+
+                npm test    ----------->  ng test -------> trigger karma and then
+                                                        karma executes the .spec.ts files 
+                                                        contianing jasmine test cases 
+                                                        and then karma reports the test results
+                                                        on the browser (chrome).

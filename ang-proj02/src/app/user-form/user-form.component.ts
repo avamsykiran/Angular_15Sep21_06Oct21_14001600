@@ -10,13 +10,17 @@ import { UserService } from '../services/user.service';
 })
 export class UserFormComponent  {
 
-  user:User|undefined;
+  user:User;
   isNew:boolean;
+  
   constructor(private userService:UserService,private router:Router,private activatedRoute:ActivatedRoute) {
     let id = this.activatedRoute.snapshot.params.id;
     if(id){
       this.isNew=false;
-      this.user=this.userService.getById(parseInt(id));
+     /* let u = this.userService.getById(parseInt(id));
+      if(u)
+        this.user=u;*/
+      this.user=this.userService.getById(parseInt(id))??{id:0,fullName:'',email:''};
     }else{
       this.isNew=true;
       this.user={id:0,fullName:'',email:''};
