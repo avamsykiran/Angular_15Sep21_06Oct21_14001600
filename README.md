@@ -427,31 +427,8 @@ Angular 11
     services/DelearService      offerng all crud operations
     delear-list.component
     delear-form.component       using template driven forms
-    delear-form2.component       using modle driven / reactive forms
+    delear-form2.component       using model driven / reactive forms
         with add and edit operations and routing
-
-   Angular Component LifeCycle
-    ------------------------------------------------------------------------
-
-        constructor()
-         |
-         |
-        OnInit :: ngOnInit()              be called only once after first
-                                        rendering is done.., used like ana onLoad event.
-
-            |
-            |
-            (the data bounded fields may be updated)--------|
-             |                                              |
-             ngAfterViewInit()                              |
-             |                                              |
-             ngAfterContnet()                               |
-             |                                              |
-             (rerendering of the component)  ---------------|
-                                            |
-                                    (jsut before the component gets destroyed)
-                                            |
-                                            ngOnDestroy()
 
     RxJS
     ------------------------------------------------------------------------
@@ -460,7 +437,6 @@ Angular 11
 
             acts like a bridge between background-executing tasks
             and foreground-executing tasks...!
-
 
             in javascript the asynchronous prgramming can be used
             to execute any task in the background.
@@ -474,7 +450,6 @@ Angular 11
 
             let backgroundJob = (observer) => {
 
-
                 observer.next(data); //this method can be used to emit valeus while the job in progress.
                 observer.error(errMSg); //this method  signals job abortion and pass the error message
                 observer.complete(); //this method is used to signal suiccessfull completion.
@@ -485,7 +460,7 @@ Angular 11
 
             //the backgroudnJob execution start when we call subscribe on observable object.
             // and this happens in the foreground.
-            ob.subscriber(
+            ob.subscribe(
                 (data) => {//this is the success call back to react and receive the data everytiem it is emited},
                 (err) => {//this is the error call back to react and receive the error },
                 () => {//the onComplte call back to react on job completion}
@@ -503,6 +478,30 @@ Angular 11
                 catch
                 ....etc
 
+
+   Angular Component LifeCycle
+    ------------------------------------------------------------------------
+
+        constructor()
+         |
+         |
+        OnInit :: ngOnInit()              be called only once after first
+                                        rendering is done.., used like ana onLoad event.
+            |
+            |
+            (the data bounded fields may be updated)--------|
+             |                                              |
+             ngAfterViewInit()                              |
+             |                                              |
+             ngAfterContnet()                               |
+             |                                              |
+             (rerendering of the component)  ---------------|
+                                            |
+                                    (jsut before the component gets destroyed)
+                                            |
+                                            ngOnDestroy()
+
+   
     Fake Rest Api End Points Using json-server
     ----------------------------------------------------------------------------
 

@@ -1,0 +1,27 @@
+<div class="col-sm-9 border border-danger m-2 p-2 mx-auto">
+
+    <form class="form-inline" (ngSubmit)="startSeries()">
+        <label class="form-label mr-2">
+            Lower Bound:
+            <input type="number" name="lb" [(ngModel)]="lb" class="form-control" required />
+        </label>
+        <label class="form-label mr-2">
+            Upper Bound:
+            <input type="number" name="ub" [(ngModel)]="ub" class="form-control" required />
+        </label>
+        <label class="form-label mr-2">
+            <input type="checkbox" name="evens" [(ngModel)]="evens" class="form-control"/> Evens 
+        </label>
+        <label class="form-label mr-2">
+            <input type="checkbox" name="squares" [(ngModel)]="squares" class="form-control"/> Squares 
+        </label>
+        <button class="btn btn-sm btn-primary" [disabled]="isJobInProgress">START</button>
+    </form>
+
+    <div class="p-2 border border-info text-wrap" *ngIf="err || results">
+        <p *ngIf="err"><strong>{{err}}</strong></p>
+        <p *ngIf="results && results.length>0" class="text-wrap">
+            <span *ngFor="let n of results">{{n}} </span>
+        </p>
+    </div>
+</div>
