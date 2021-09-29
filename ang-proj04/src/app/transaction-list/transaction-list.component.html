@@ -1,0 +1,31 @@
+
+<div class="col-sm-8 mx-auto">
+    <h3>Transaction List</h3>
+
+    <div class="alert alert-info p-2" *ngIf="isLoading">
+        Please wait while loading data...
+    </div>
+
+    <div class="alert alert-danger p-2" *ngIf="errMsg">
+        {{errMsg}}
+    </div>
+
+    <table class="table table-border table-hover" *ngIf="txns">
+        <thead>
+            <th>Date</th>
+            <th>Txn.Id</th>
+            <th>Header</th>
+            <th>Credit</th>
+            <th>Debit</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let t of txns">
+                <td class="text-left">{{t.dot|date:'dd-MMM-yy'}}</td>
+                <td class="text-right">{{t.id}}</td>
+                <td class="text-left">{{t.header}}</td>
+                <td class="text-right">{{(t.type==='CREDIT'?t.amount:undefined)|currency:'INR'}}</td>
+                <td class="text-right">{{(t.type==='DEBIT'?t.amount:undefined)|currency:'INR'}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

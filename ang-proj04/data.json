@@ -1,0 +1,39 @@
+{
+  "txns": [
+    {
+      "id": 1,
+      "header": "Salary",
+      "type": "CREDIT",
+      "amount": 56000,
+      "dot": "2021-09-01"
+    },
+    {
+      "id": 2,
+      "header": "House Rent",
+      "type": "DEBIT",
+      "amount": 16000,
+      "dot": "2021-09-05"
+    },
+    {
+      "id": 3,
+      "header": "Internet Bill",
+      "type": "DEBIT",
+      "amount": 600,
+      "dot": "2021-09-05"
+    },
+    {
+      "header": "Car EMI",
+      "type": "DEBIT",
+      "amount": 26000,
+      "dot": "2021-09-05",
+      "id": 4
+    },
+    {
+      "header": "Share Bonus",
+      "type": "CREDIT",
+      "amount": 36000,
+      "dot": "2021-09-11",
+      "id": 5
+    }
+  ]
+}

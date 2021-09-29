@@ -508,7 +508,7 @@ Angular 11
         json-server is a js tool that can create rest end points to perform
         CRUD operations on a .json file.
 
-        these rest end points are nto for real time usage.
+        these rest end points are not for real time usage.
         only to learn ....
 
         npm install json-server --save
