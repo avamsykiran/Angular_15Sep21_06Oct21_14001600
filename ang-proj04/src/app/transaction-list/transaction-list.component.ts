@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Transaction } from '../models/transaction';
+import { TransactionSummary } from '../models/transaction-summary';
 import { TransactionService } from '../services/transaction.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { TransactionService } from '../services/transaction.service';
 })
 export class TransactionListComponent implements OnInit {
 
-  txns?:Transaction[];
+  txnSmry?:TransactionSummary;
   isLoading:boolean;
   errMsg?:string;
 
@@ -17,11 +18,21 @@ export class TransactionListComponent implements OnInit {
     this.isLoading=true;
   }
 
-  ngOnInit(): void {
-    this.txnService.getAll().subscribe(
-      data => {this.isLoading=false; this.txns=data;},
+  loadData(){
+    this.txnService.getTxnSummary().subscribe(
+      data => {this.isLoading=false; this.txnSmry=data;},
       err => {console.log(err);this.errMsg="Sorry! Data could not be feteched!";this.isLoading=false;}
     );
   }
 
+  ngOnInit(): void {
+    this.loadData();
+  }
+
+  delete(id:number){
+    this.txnService.deleteById(id).subscribe(
+      () => this.loadData(),
+      err => {console.log(err);this.errMsg="Sorry! Data could not be deleted!"}
+    );
+  }
 }

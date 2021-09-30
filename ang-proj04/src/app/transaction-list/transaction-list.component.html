@@ -10,22 +10,38 @@
         {{errMsg}}
     </div>
 
-    <table class="table table-border table-hover" *ngIf="txns">
+    <table class="table table-border table-hover" *ngIf="txnSmry">
         <thead>
             <th>Date</th>
             <th>Txn.Id</th>
             <th>Header</th>
             <th>Credit</th>
             <th>Debit</th>
+            <th>Action</th>
         </thead>
         <tbody>
-            <tr *ngFor="let t of txns">
+            <tr *ngFor="let t of txnSmry.txns">
                 <td class="text-left">{{t.dot|date:'dd-MMM-yy'}}</td>
                 <td class="text-right">{{t.id}}</td>
                 <td class="text-left">{{t.header}}</td>
                 <td class="text-right">{{(t.type==='CREDIT'?t.amount:undefined)|currency:'INR'}}</td>
                 <td class="text-right">{{(t.type==='DEBIT'?t.amount:undefined)|currency:'INR'}}</td>
+                <td class="text-center">
+                    <a [routerLink]="['/edit',t.id]" class="btn btn-sm btn-info mr-2">EDIT</a>
+                    <button class="btn btn-sm btn-danger" (click)="delete(t.id)">DELETE</button>
+                </td>
             </tr>
         </tbody>
+        <tfoot>
+            <tr>
+                <th colspan="3" class="text-right">Total</th>
+                <th class="text-right">{{txnSmry.totalCredit|currency:'INR'}}</th>
+                <th class="text-right">{{txnSmry.totalDebit|currency:'INR'}}</th>
+            </tr>
+            <tr>
+                <th colspan="4" class="text-right">Balance</th>
+                <th class="text-right">{{txnSmry.balance|currency:'INR'}}</th>
+            </tr>
+        </tfoot>
     </table>
 </div>

@@ -1,1 +1,48 @@
-<p>transaction-form works!</p>
+<div class="col-sm-5 mx-auto">
+    <h3>{{isNew?"New ":"Edit "}} Transaction</h3>
+
+    <div class="alert alert-danger p-2" *ngIf="errMsg">
+        {{errMsg}}
+    </div>
+
+    <form class="form" [formGroup]="txnForm" (ngSubmit)="formSubmitted()">
+        <div class="form-group">
+            <label>Transaction Id</label>
+            <input type="number" class="form-control" formControlName="id" readonly />
+        </div>
+        <div class="form-group">
+            <label>Transaction Header</label>
+            <input type="text" class="form-control" formControlName="header" />
+            <div class="alert alert-danger" *ngIf="header.invalid &&(header.dirty||header.touched)">
+                <span *ngIf="header.errors?.required">This field is mandate</span>
+                <span *ngIf="header.errors?.minlength">Atleast 5 charectars expected</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Transaction Type</label>
+            <select class="form-control" formControlName="type">
+                <option value="CREDIT">EARNINGS</option>
+                <option value="DEBIT">SPENDINGS</option>
+            </select>
+            <div class="alert alert-danger" *ngIf="type.invalid &&(type.dirty||type.touched)">
+                <span *ngIf="type.errors?.required">This field is mandate</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Transaction Amount</label>
+            <input type="number" class="form-control" formControlName="amount" />
+            <div class="alert alert-danger" *ngIf="amount.invalid &&(amount.dirty||amount.touched)">
+                <span *ngIf="amount.errors?.required">This field is mandate</span>
+                <span *ngIf="amount.errors?.min">It must be atelast a rupee</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Transaction Date</label>
+            <input type="date" class="form-control" formControlName="dot" />
+            <div class="alert alert-danger" *ngIf="dot.invalid &&(dot.dirty||dot.touched)">
+                <span *ngIf="dot.errors?.required">This field is mandate</span>
+            </div>
+        </div>
+        <button class="btn btn-block btn-primary" [disabled]="txnForm.invalid">Save Transaction</button>
+    </form>
+</div>

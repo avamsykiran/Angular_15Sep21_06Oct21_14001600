@@ -29,11 +29,18 @@
       "id": 4
     },
     {
+      "id": 5,
       "header": "Share Bonus",
       "type": "CREDIT",
-      "amount": 36000,
-      "dot": "2021-09-11",
-      "id": 5
+      "amount": 30000,
+      "dot": "2021-09-11"
+    },
+    {
+      "id": 6,
+      "header": "Birthday Party",
+      "type": "DEBIT",
+      "amount": 8500,
+      "dot": "2021-09-30"
     }
   ]
 }
