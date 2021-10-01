@@ -1,0 +1,11 @@
+<app-menu-bar brand="A demo app" [links]="links"></app-menu-bar>
+<main class="container-fluid p-4">
+
+  <p>
+    {{1024|intoWords}}
+  </p>
+
+  <app-msg-box *ngFor="let m of msgs; let i = index" [type]="m.type" (onOk)="deleteMsg(i)">
+    <strong>{{m.msg}}</strong>
+  </app-msg-box>
+</main>
