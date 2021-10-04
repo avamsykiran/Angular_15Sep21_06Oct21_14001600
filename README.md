@@ -553,8 +553,8 @@ Angular 11
     -------------------------------------------------------------
     ng g module EntityDoamin --route entity --module app.module
 
-    Router Guards
-    ----------------------------------------------------------------------------------
+Router Guards
+----------------------------------------------------------------------------------
 
     is used to protect a route from being accessed
     only when it is allowed to access.
