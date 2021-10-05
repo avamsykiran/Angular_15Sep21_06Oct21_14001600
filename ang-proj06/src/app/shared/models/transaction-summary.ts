@@ -6,6 +6,6 @@ export interface TransactionSummary {
     totalCredit:number;
     totalDebit:number;
     balance:number;
-    startDate:Date;
-    endDate:Date;
+    startDate?:Date;
+    endDate?:Date;
 }

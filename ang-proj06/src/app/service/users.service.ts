@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from '../shared/models/user';
+import { map, filter,tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -32,5 +33,32 @@ export class UsersService {
 
   modify(user:User):Observable<User>{
     return this.http.put<User>(`${this.usersApiUrl}/${user.id}`,user);
+  }
+
+  login(email:string,password:string) :Observable<User> {
+    return this.http.get<User[]>(`${this.usersApiUrl}?email=${email}`).pipe(
+      map( users => users[0]),
+      tap( u => {
+        if(u.password===password){
+          sessionStorage.setItem("user",JSON.stringify({...u,password:''}))
+        }else{
+          throw new Error("Invalid Credentials");
+        }
+      })
+    );
+  }
+
+  logout(){
+    sessionStorage.removeItem("user");
+    sessionStorage.clear();
+  }
+
+  currentUser():User|null{
+    let u = sessionStorage.getItem("user");
+    return u? JSON.parse(u):null;
+  }
+
+  isLoggedIn():boolean{
+    return this.currentUser()!==null;
   }
 }

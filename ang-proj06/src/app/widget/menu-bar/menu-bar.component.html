@@ -1,1 +1,12 @@
-<p>menu-bar works!</p>
+<nav class="navbar navbar-dark bg-dark navbar-expand-sm">
+    <a routerLink="/" class="navbar-brand">{{brand}}</a>
+
+    <ul class="navbar-nav">
+        <li *ngFor="let link of links" class="nav-item">
+            <a [routerLink]="link[0]" class="nav-link" routerLinkActive="active">{{link[1]}}</a>
+        </li>
+        <li *ngIf="displayLogout" class="nav-item">
+            <a [routerLink]="" class="nav-link" (click)="logout()">Sign Out</a>
+        </li>
+    </ul>
+</nav>

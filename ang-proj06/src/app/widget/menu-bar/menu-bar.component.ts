@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-menu-bar',
@@ -7,9 +7,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuBarComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  brand:string;
+
+  @Input()
+  links:string[][];
+
+  @Input()
+  displayLogout:boolean;
+
+  @Output()
+  logoutClicked:EventEmitter<void>;
+
+  constructor() {
+    this.brand="";
+    this.links=[];
+    this.displayLogout=true;
+    this.logoutClicked=new EventEmitter<void>();
+  }
 
   ngOnInit(): void {
   }
 
+  logout(){
+    this.logoutClicked.emit();
+  }
 }

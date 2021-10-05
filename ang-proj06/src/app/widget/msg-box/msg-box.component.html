@@ -1,1 +1,11 @@
-<p>msg-box works!</p>
+<div [class]="{'alert':true,'alert-info':type==='info','alert-danger':type=='error','p-1':true,'m-1':true}">
+    <div class="row">
+        <div class="col">
+            <ng-content></ng-content>
+        </div>
+        <div class="col-sm-2">
+            <button type="button" class="btn btn-secondary btn-block" (click)="okBtnClicked()">OK</button>
+        </div>
+    </div>
+</div>
+
