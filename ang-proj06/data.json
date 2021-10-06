@@ -1,4 +1,19 @@
 {
-    "users":[],
-    "txns":[]
+  "users": [
+    {
+      "id": 1,
+      "fullName": "Administrator",
+      "email": "admin@gmail.com",
+      "password": "password",
+      "role": "ADMIN"
+    },
+    {
+      "email": "vamsy@gmail.com",
+      "password": "password",
+      "fullName": "Vamsy Kiran",
+      "id": 2,
+      "role": "USER"
+    }
+  ],
+  "txns": []
 }

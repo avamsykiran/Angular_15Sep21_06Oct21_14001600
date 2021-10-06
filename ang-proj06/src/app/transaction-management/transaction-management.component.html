@@ -1,1 +1,4 @@
-<p>transaction-management works!</p>
+<app-menu-bar brand="BudgetTrackingApp" [links]="links" (logoutClicked)="logout()"></app-menu-bar>
+<div class="container-fluid p-4">
+    <router-outlet></router-outlet>
+</div>

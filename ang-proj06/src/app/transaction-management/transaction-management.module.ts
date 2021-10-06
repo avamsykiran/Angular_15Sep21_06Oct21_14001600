@@ -5,13 +5,15 @@ import { TransactionManagementRoutingModule } from './transaction-management-rou
 import { TransactionManagementComponent } from './transaction-management.component';
 import { TransactionsListComponent } from './transactions-list/transactions-list.component';
 import { TransactionsFormComponent } from './transactions-form/transactions-form.component';
+import { WidgetModule } from '../widget/widget.module';
 
 
 @NgModule({
   declarations: [TransactionManagementComponent, TransactionsListComponent, TransactionsFormComponent],
   imports: [
     CommonModule,
-    TransactionManagementRoutingModule
+    TransactionManagementRoutingModule,
+    WidgetModule
   ]
 })
 export class TransactionManagementModule { }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UsersService } from '../service/users.service';
 
 @Component({
   selector: 'app-user-management',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserManagementComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService:UsersService,private router:Router) { }
 
   ngOnInit(): void {
   }
 
+  logout(){
+    this.userService.logout();
+    this.router.navigateByUrl("/signin");
+  }
 }

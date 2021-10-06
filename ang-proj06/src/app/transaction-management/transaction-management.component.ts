@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UsersService } from '../service/users.service';
 
 @Component({
   selector: 'app-transaction-management',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TransactionManagementComponent implements OnInit {
 
-  constructor() { }
+  links:string[][];
+
+  constructor(private userService:UsersService,private router:Router) {
+    this.links=[
+      ['list','Transaction List'],
+      ['add','New Transaction']
+    ];
+  }
 
   ngOnInit(): void {
   }
 
+  logout(){
+    this.userService.logout();
+    this.router.navigateByUrl("/signin");
+  }
 }

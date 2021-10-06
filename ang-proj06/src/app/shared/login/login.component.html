@@ -1,1 +1,21 @@
 <app-menu-bar brand="BudgetTrackingApp" [displayLogout]="false" [links]="[['/signup','New User? Sign Up!']]"></app-menu-bar>
+<div class="container-fluid p-4">
+    
+        <div class="col-4 bg-secondary mx-auto p-4">
+
+            <app-msg-box type="error" *ngIf="errMsg" (okClicked)="errMsg=undefined">{{errMsg}}</app-msg-box>
+
+            <form class="form" #f="ngForm" (ngSubmit)="login()">
+                <div class="form-group">
+                    <input type="email" name="email" [(ngModel)]="email" class="form-control"
+                    placeholder="Your Email" required />
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" [(ngModel)]="password" class="form-control"
+                    placeholder="Password" required />
+                </div>
+                <button class="btn btn-primary btn-block" [disabled]="f.invalid">Sign In</button>
+            </form>
+        </div>
+    
+</div>

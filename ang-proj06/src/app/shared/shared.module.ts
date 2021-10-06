@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WidgetModule } from '../widget/widget.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [LoginComponent, RegistrationComponent],
@@ -11,7 +12,8 @@ import { WidgetModule } from '../widget/widget.module';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    WidgetModule
+    WidgetModule,
+    RouterModule
   ],
   exports:[
     LoginComponent,RegistrationComponent
