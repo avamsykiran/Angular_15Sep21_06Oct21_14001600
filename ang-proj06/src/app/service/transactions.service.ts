@@ -25,10 +25,22 @@ export class TransactionsService {
     return this.http.get<Transaction[]>(`${this.txnApiUrl}?userId=${uid}`).pipe(
       map(txns => {
 
-        let totalCredit = txns.filter(t=>t.type==='CREDIT').map(t=>t.amount).reduce((a1,a2)=>a1+a2);
-        let totalDebit = txns.filter(t=>t.type==='DEBIT').map(t=>t.amount).reduce((a1,a2)=>a1+a2);
-        let balance = totalCredit-totalDebit;
+        let totalCredit = 0;
+        let totalDebit = 0;
+        let balance = 0;
 
+        if(txns && txns.length>0){
+          let allCredits = txns.filter(t=>t.type==='CREDIT');
+          if(allCredits && allCredits.length>0)
+            totalCredit = allCredits.map(t=>t.amount).reduce((a1,a2)=>a1+a2);
+          
+          let allDebits = txns.filter(t=>t.type==='DEBIT');
+          if(allDebits && allDebits.length>0)
+            totalDebit = allDebits.map(t=>t.amount).reduce((a1,a2)=>a1+a2);
+            
+          balance = totalCredit-totalDebit;
+        }
+        
         return { txns, totalCredit, totalDebit, balance,userId:uid };
       })
     );

@@ -1,1 +1,29 @@
 <app-menu-bar brand="BudgetTrackingApp" (logoutClicked)="logout()"></app-menu-bar>
+<div class="container-fluid p-4">
+    <div class="col-sm-10">
+        <h3>Users List</h3>
+
+        <app-msg-box type="error" *ngIf="errMsg">
+            <strong>{{errMsg}}</strong>
+        </app-msg-box>
+
+        <table class="table table-border table-stripped" *ngIf="users">
+            <thead>
+                <tr>
+                    <th>User#</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let u of users">
+                    <td>{{u.id}}</td>
+                    <td>{{u.fullName}}</td>
+                    <td>{{u.email}}</td>
+                    <td>{{u.role}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

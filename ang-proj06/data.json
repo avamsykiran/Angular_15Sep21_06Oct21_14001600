@@ -15,5 +15,30 @@
       "role": "USER"
     }
   ],
-  "txns": []
+  "txns": [
+    {
+      "id": 1,
+      "header": "Salary",
+      "type": "CREDIT",
+      "amount": 55000,
+      "dot": "2021-10-01",
+      "userId": 2
+    },
+    {
+      "id": 2,
+      "header": "House EMI",
+      "type": "DEBIT",
+      "amount": 12500,
+      "dot": "2021-10-08",
+      "userId": 2
+    },
+    {
+      "id": 3,
+      "header": "Salary",
+      "type": "CREDIT",
+      "amount": 43000,
+      "dot": "2021-09-01",
+      "userId": 2
+    }
+  ]
 }
